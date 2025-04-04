@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TieuHaoSanXuat.Models.Material>
+
+<h2>Danh sách Vật Tư</h2>
+<a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Tên</th>
+            <th>Đơn vị</th>
+            <th>Số lượng tồn</th>
+            <th>Kho</th>
+            <th>Nhà cung cấp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var material in Model)
+        {
+            <tr>
+               
+                <td>@material.Name</td>
+                <td>@material.Unit</td>
+                <td>@material.QuantityInStock</td>
+                <td>@material.Warehouse.Name</td>
+                <td>@material.Supplier.Name</td>
+                <td>
+                   
+                    <a asp-action="Edit" asp-route-id="@material.Id" class="btn btn-warning">Sửa</a>
+                    <a asp-action="Detail" asp-route-id="@material.Id" class="btn btn-danger">Chi tiet</a>
+                    <a asp-action="Delete" asp-route-id="@material.Id" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

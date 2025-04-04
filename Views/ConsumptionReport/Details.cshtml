@@ -1,0 +1,55 @@
+﻿@model TieuHaoSanXuat.Models.ConsumptionReport
+
+<h2>Chi tiết báo cáo tiêu hao vật tư</h2>
+
+<div>
+    <h4>Báo cáo tiêu hao vật tư</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Ngày lập báo cáo
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ReportDate.ToShortDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Tổng vật tư tiêu hao
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TotalMaterialsUsed
+        </dd>
+        <dt class="col-sm-2">
+            Ghi chú
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Notes
+        </dd>
+    </dl>
+
+    <h4>Chi tiết tiêu hao vật tư</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên vật tư</th>
+                <th>Quy trình sản xuất</th>
+                <th>Số lượng sử dụng</th>
+                <th>Ngày tiêu hao</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usage in Model.MaterialConsumptions)
+            {
+                <tr>
+                    <td>@usage.Material.Name</td>
+                    <td>@usage.Process.ProcessName</td>
+                    <td>@usage.QuantityUsed</td>
+                    <td>@usage.ConsumptionDate.ToShortDateString()</td>
+                    <td>@usage.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

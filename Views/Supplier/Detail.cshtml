@@ -1,0 +1,31 @@
+﻿@model TieuHaoSanXuat.Models.Supplier
+
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<h2>Supplier Details</h2>
+
+<div>
+    <h4>Cinema Information</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Location)</dt>
+        <dd class="col-sm-9">@Model.Location</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+        <dd class="col-sm-9">@Model.PhoneNumber</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+
+
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

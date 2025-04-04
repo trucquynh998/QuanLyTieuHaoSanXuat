@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TieuHaoSanXuat.Models.Material>
+@{
+    ViewData["Title"] = "Material List";
+}
+<h2>Material List</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Unit</th>
+            <th>Quantity In Stock</th>
+            <th>Warehouse</th>
+            <th>Supplier</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Unit</td>
+                <td>@item.QuantityInStock</td>
+                <td>@item.Warehouse.Name</td>
+                <td>@item.Supplier.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

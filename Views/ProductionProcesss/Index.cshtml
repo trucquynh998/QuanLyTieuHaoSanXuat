@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TieuHaoSanXuat.Models.ProductionProcess>
+
+<h2>Danh sách Quy trình sản xuất</h2>
+<a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên quy trình</th>
+            <th>Mô tả</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var process in Model)
+        {
+            <tr>
+                <td>@process.ProcessName</td>
+                <td>@process.Description</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@process.Id" class="btn btn-warning">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@process.Id" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
